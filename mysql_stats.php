@@ -270,7 +270,7 @@ $def[$pom] .= rrd::gprint("SLOW_QUERIES",array("LAST","MAX","AVERAGE"),"%7.0lf")
 
 
 
-// Graph 6: Temporary Objects
+// Graph 6 : Temporary Objects
 
 ++$pom;
 $ds_name[$pom] = 'MySQL Temporary Objects';
@@ -300,7 +300,7 @@ $def[$pom] .= rrd::gprint("CREATED_TMP_FILES",array("LAST","MAX","AVERAGE"),"%7.
 
 
 
-// Graph 7: Network Traffic
+// Graph 7 : Network Traffic
 
 ++$pom;
 $ds_name[$pom] = 'MySQL Network Traffic';
@@ -331,7 +331,7 @@ $def[$pom] .= rrd::gprint("TREND_BYTES_RECEIVED",array("LAST","MAX","AVERAGE"),"
 
 
 
-// Graph 7 : Transaction Handler
+// Graph 8 : Transaction Handler
 
 ++$pom;
 $ds_name[$pom] = 'MySQL Transactions Handler';
@@ -366,7 +366,7 @@ $def[$pom] .= rrd::gprint("HANDLER_SAVEPOINT_ROLLBACK",array("LAST","MAX","AVERA
 
 
 
-// Graph 8 : Files & Tables
+// Graph 9 : Files & Tables
 
 ++$pom;
 $ds_name[$pom] = 'MySQL Files & Tables';
@@ -407,7 +407,7 @@ $def[$pom] .= rrd::gprint("OPENED_TABLES",array("LAST","MAX","AVERAGE"),"%7.0lf"
 
 
 
-// Graph 9 : InnoDB Buffer Pool
+// Graph 10: InnoDB Buffer Pool
 
 ++$pom;
 $ds_name[$pom] = 'MySQL InnoDB Buffer Pool';
@@ -444,7 +444,7 @@ $def[$pom] .= rrd::gprint("INNODB_BUFFER_POOL_PAGES_DIRTY",array("LAST","MAX","A
 
 
 
-// Graph 10 : InnoDB Buffer Pool Activity
+// Graph 11: InnoDB Buffer Pool Activity
 
 ++$pom;
 $ds_name[$pom] = 'MySQL InnoDB Buffer Pool Activity';
@@ -474,7 +474,7 @@ $def[$pom] .= rrd::gprint("INNODB_PAGES_WRITTEN",array("LAST","MAX","AVERAGE"),"
 
 
 
-// Graph 11: InnoDB I/O
+// Graph 12: InnoDB I/O
 
 ++$pom;
 $ds_name[$pom] = 'MySQL InnoDB I/O';
