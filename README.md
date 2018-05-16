@@ -15,18 +15,18 @@ Remote or local (tested with 'check_by_ssh' but should work with NRPE also) exec
 
 The Output is consolidated into 12 Graphs:
   
-  Graph 1 : MySQL Threads & Connections
-  Graph 2 : Commands Counters
-  Graph 3 : Query Cache
-  Graph 4 : Query Cache Memory
-  Graph 5 : Table Locks
-  Graph 6 : Temporary Objects
-  Graph 7 : Network Traffic
-  Graph 8 : Transaction Handler
-  Graph 9 : Files & Tables
-  Graph 10: InnoDB Buffer Pool
-  Graph 11: InnoDB Buffer Pool Activity
-  Graph 12: InnoDB I/O
+  1 : MySQL Threads & Connections
+  2 : Commands Counters
+  3 : Query Cache
+  4 : Query Cache Memory
+  5 : Table Locks
+  6 : Temporary Objects
+  7 : Network Traffic
+  8 : Transaction Handler
+  9 : Files & Tables
+  10: InnoDB Buffer Pool
+  11: InnoDB Buffer Pool Activity
+  12: InnoDB I/O
 
 
 
