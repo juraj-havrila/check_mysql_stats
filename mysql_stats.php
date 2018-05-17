@@ -217,25 +217,27 @@ $my_pos=$position["QCACHE_FREE_MEMORY"];
 $def[$pom] .= rrd::def("QCACHE_FREE_MEMORY", $RRDFILE[$my_pos], $DS[$my_pos], "AVERAGE");
 $my_pos=$position["QCACHE_TOTAL_BLOCKS"];
 $def[$pom] .= rrd::def("QCACHE_TOTAL_BLOCKS", $RRDFILE[$my_pos], $DS[$my_pos], "AVERAGE");
+$def[$pom] .= rrd::cdef("B_QCACHE_TOTAL_BLOCKS","QCACHE_TOTAL_BLOCKS,512,*");
 $my_pos=$position["QCACHE_FREE_BLOCKS"];
 $def[$pom] .= rrd::def("QCACHE_FREE_BLOCKS", $RRDFILE[$my_pos], $DS[$my_pos], "AVERAGE");
+$def[$pom] .= rrd::cdef("B_QCACHE_FREE_BLOCKS","QCACHE_FREE_BLOCKS,512,*");
 
 $my_var='QUERY_CACHE_SIZE';
 $label = rrd::cut($my_var,23);
 $def[$pom] .= rrd::area("QUERY_CACHE_SIZE",'#e6eeff',$label);
-$def[$pom] .= rrd::gprint("QUERY_CACHE_SIZE",array("LAST","MAX","AVERAGE"),"%7.0lf") ;
+$def[$pom] .= rrd::gprint("QUERY_CACHE_SIZE","MAX","%7.0lf \\n") ;
+$my_var='QCACHE_TOTAL';
+$label = rrd::cut($my_var,23);
+$def[$pom] .= rrd::area("B_QCACHE_TOTAL_BLOCKS",'#264d00',$label);
+$def[$pom] .= rrd::gprint("B_QCACHE_TOTAL_BLOCKS",array("LAST","MAX","AVERAGE"),"%7.0lf") ;
+$my_var='QCACHE_FREE';
+$label = rrd::cut($my_var,23);
+$def[$pom] .= rrd::area("B_QCACHE_FREE_BLOCKS",'#009933',$label,1);
+$def[$pom] .= rrd::gprint("B_QCACHE_FREE_BLOCKS",array("LAST","MAX","AVERAGE"),"%7.0lf") ;
 $my_var='QCACHE_FREE_MEMORY';
 $label = rrd::cut($my_var,23);
-$def[$pom] .= rrd::area("QCACHE_FREE_MEMORY",'#ccff99',$label);
+$def[$pom] .= rrd::area("QCACHE_FREE_MEMORY",'#ccff99',$label,1);
 $def[$pom] .= rrd::gprint("QCACHE_FREE_MEMORY",array("LAST","MAX","AVERAGE"),"%7.0lf") ;
-$my_var='QCACHE_TOTAL_BLOCKS';
-$label = rrd::cut($my_var,23);
-$def[$pom] .= rrd::line1("QCACHE_TOTAL_BLOCKS",'#264d00',$label);
-$def[$pom] .= rrd::gprint("QCACHE_TOTAL_BLOCKS",array("LAST","MAX","AVERAGE"),"%7.0lf") ;
-$my_var='QCACHE_FREE_BLOCKS';
-$label = rrd::cut($my_var,23);
-$def[$pom] .= rrd::line1("QCACHE_FREE_BLOCKS",'#009933',$label);
-$def[$pom] .= rrd::gprint("QCACHE_FREE_BLOCKS",array("LAST","MAX","AVERAGE"),"%7.0lf") ;
 
 
 
@@ -270,7 +272,7 @@ $def[$pom] .= rrd::gprint("SLOW_QUERIES",array("LAST","MAX","AVERAGE"),"%7.0lf")
 
 
 
-// Graph 6 : Temporary Objects
+// Graph 6: Temporary Objects
 
 ++$pom;
 $ds_name[$pom] = 'MySQL Temporary Objects';
@@ -300,7 +302,7 @@ $def[$pom] .= rrd::gprint("CREATED_TMP_FILES",array("LAST","MAX","AVERAGE"),"%7.
 
 
 
-// Graph 7 : Network Traffic
+// Graph 7: Network Traffic
 
 ++$pom;
 $ds_name[$pom] = 'MySQL Network Traffic';
@@ -331,7 +333,7 @@ $def[$pom] .= rrd::gprint("TREND_BYTES_RECEIVED",array("LAST","MAX","AVERAGE"),"
 
 
 
-// Graph 8 : Transaction Handler
+// Graph 7 : Transaction Handler
 
 ++$pom;
 $ds_name[$pom] = 'MySQL Transactions Handler';
@@ -366,7 +368,7 @@ $def[$pom] .= rrd::gprint("HANDLER_SAVEPOINT_ROLLBACK",array("LAST","MAX","AVERA
 
 
 
-// Graph 9 : Files & Tables
+// Graph 8 : Files & Tables
 
 ++$pom;
 $ds_name[$pom] = 'MySQL Files & Tables';
@@ -407,7 +409,7 @@ $def[$pom] .= rrd::gprint("OPENED_TABLES",array("LAST","MAX","AVERAGE"),"%7.0lf"
 
 
 
-// Graph 10: InnoDB Buffer Pool
+// Graph 9 : InnoDB Buffer Pool
 
 ++$pom;
 $ds_name[$pom] = 'MySQL InnoDB Buffer Pool';
@@ -444,7 +446,7 @@ $def[$pom] .= rrd::gprint("INNODB_BUFFER_POOL_PAGES_DIRTY",array("LAST","MAX","A
 
 
 
-// Graph 11: InnoDB Buffer Pool Activity
+// Graph 10 : InnoDB Buffer Pool Activity
 
 ++$pom;
 $ds_name[$pom] = 'MySQL InnoDB Buffer Pool Activity';
@@ -474,7 +476,7 @@ $def[$pom] .= rrd::gprint("INNODB_PAGES_WRITTEN",array("LAST","MAX","AVERAGE"),"
 
 
 
-// Graph 12: InnoDB I/O
+// Graph 11: InnoDB I/O
 
 ++$pom;
 $ds_name[$pom] = 'MySQL InnoDB I/O';
