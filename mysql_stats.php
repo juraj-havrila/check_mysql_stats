@@ -312,24 +312,24 @@ $opt[$pom] .= " --vertical-label \"Data throughput per scan period \" ";
 
 $my_pos=$position["BYTES_SENT"];
 $def[$pom] = rrd::def("BYTES_SENT", $RRDFILE[$my_pos], $DS[$my_pos], "AVERAGE");
-$def[$pom] .= rrd::cdef("PREV_BYTES_SENT","PREV(BYTES_SENT)");
-$def[$pom] .= rrd::cdef("TREND_BYTES_SENT","BYTES_SENT,PREV_BYTES_SENT,-");
+//$def[$pom] .= rrd::cdef("PREV_BYTES_SENT","PREV(BYTES_SENT)");
+//$def[$pom] .= rrd::cdef("TREND_BYTES_SENT","BYTES_SENT,PREV_BYTES_SENT,-");
 $my_pos=$position["BYTES_RECEIVED"];
 $def[$pom] .= rrd::def("BYTES_RECEIVED", $RRDFILE[$my_pos], $DS[$my_pos], "AVERAGE");
-$def[$pom] .= rrd::cdef("PREV_BYTES_RECEIVED","PREV(BYTES_RECEIVED)");
-$def[$pom] .= rrd::cdef("TREND_BYTES_RECEIVED","BYTES_RECEIVED,PREV_BYTES_RECEIVED,-");
-$def[$pom] .= rrd::cdef("NEG_BYTES_RECEIVED","TREND_BYTES_RECEIVED,-1,*");
+//$def[$pom] .= rrd::cdef("PREV_BYTES_RECEIVED","PREV(BYTES_RECEIVED)");
+//$def[$pom] .= rrd::cdef("TREND_BYTES_RECEIVED","BYTES_RECEIVED,PREV_BYTES_RECEIVED,-");
+$def[$pom] .= rrd::cdef("NEG_BYTES_RECEIVED","BYTES_RECEIVED,-1,*");
 
 $my_var='BYTES_SENT';
 $label = rrd::cut($my_var,23);
-$def[$pom] .= rrd::area("TREND_BYTES_SENT",'#3399ff');
-$def[$pom] .= rrd::line1("TREND_BYTES_SENT",'#0080ff',$label);
-$def[$pom] .= rrd::gprint("TREND_BYTES_SENT",array("LAST","MAX","AVERAGE"),"%7.0lf") ;
+$def[$pom] .= rrd::area("BYTES_SENT",'#3399ff');
+$def[$pom] .= rrd::line1("BYTES_SENT",'#0080ff',$label);
+$def[$pom] .= rrd::gprint("BYTES_SENT",array("LAST","MAX","AVERAGE"),"%7.0lf") ;
 $my_var='BYTES_RECEIVED';
 $label = rrd::cut($my_var,23);
 $def[$pom] .= rrd::area("NEG_BYTES_RECEIVED",'#00ffff');
 $def[$pom] .= rrd::line1("NEG_BYTES_RECEIVED",'#00cccc',$label);
-$def[$pom] .= rrd::gprint("TREND_BYTES_RECEIVED",array("LAST","MAX","AVERAGE"),"%7.0lf") ;
+$def[$pom] .= rrd::gprint("BYTES_RECEIVED",array("LAST","MAX","AVERAGE"),"%7.0lf") ;
 
 
 
